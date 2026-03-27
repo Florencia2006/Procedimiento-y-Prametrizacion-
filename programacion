@@ -1,0 +1,27 @@
+int posicionX;
+int posicionY;
+int ancho;
+int alto;
+
+void setup() {
+  size(400, 400);
+  background(0, 223, 250);
+}
+void draw() {
+}
+
+void mousePressed() {
+  dibujarSemaforo(mouseX, mouseY, 60, 100);
+}
+void dibujarSemaforo(float posicionX, float posicionY, float ancho, float alto) {
+  fill(0, 0, 0);
+  rect(posicionX, posicionY, ancho, alto);
+  fill(0, 0, 0);
+  rect(posicionX + ancho/2 - ancho/10, posicionY + alto, ancho/5, alto/2);
+  fill(255, 0, 0);
+  ellipse(posicionX + ancho/2, posicionY + alto*0.25, ancho/3, ancho/3);
+  fill(255, 255, 0);
+  ellipse(posicionX + ancho/2, posicionY + alto*0.5, ancho/3, ancho/3);
+  fill(0, 255, 0);
+  ellipse(posicionX + ancho/2, posicionY + alto*0.75, ancho/3, ancho/3);
+}
