@@ -1,0 +1,15 @@
+int cant=20;
+float sep=width/20;
+
+void setup() {
+  size(400, 400);
+  background(132, 25, 68);
+  sep=width/float (cant);
+}
+void draw(){
+for (int i=0; i<cant; i++) {
+  float x =i*sep;
+  line( width/2, height/2, x, 0);
+  line(width/2, height/2, x, height);
+}
+}
