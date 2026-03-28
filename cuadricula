@@ -1,0 +1,19 @@
+int cant=20;
+float sepx;
+float sepy;
+
+void setup() {
+  size(800, 600);
+  background(132, 25, 68);
+}
+void draw() {
+  for (int i=0; i<cant; i++) {
+    for (int j=0; j<cant; j++) {
+      sepx=width/cant;
+      sepy=height/cant;
+      float x =i*sepx;
+      float y =j*sepy;
+      rect(x, y, sepx , sepy);
+    }
+  }
+}
