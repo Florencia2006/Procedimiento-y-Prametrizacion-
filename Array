@@ -16,7 +16,7 @@ void draw() {
 }
 
 void mousePressed() {
-  // Guardar posición
+  
   posX[indice] = mouseX;
   posY[indice] = mouseY;
   indice++;
