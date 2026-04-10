@@ -1,0 +1,29 @@
+int[] posX = new int[10];
+int[] posY = new int[10];
+
+int indice = 0;
+int cantidad = 0;
+
+void setup() {
+  size(600, 400);
+}
+
+void draw() {
+  background(255);
+  for (int i = 0; i < cantidad; i++) {
+    ellipse(posX[i], posY[i], 40, 40);
+  }
+}
+
+void mousePressed() {
+  // Guardar posición
+  posX[indice] = mouseX;
+  posY[indice] = mouseY;
+  indice++;
+  if (indice >= 10) {
+    indice = 0;
+  }
+  if (cantidad < 10) {
+    cantidad++;
+  }
+}
