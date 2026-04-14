@@ -1,0 +1,47 @@
+// El array representa un ecualizador donde cada
+// índice almacena la altura de una barra y se 
+// actualiza dinámicamente según la posición del mouse.
+
+
+int cant_barras = 15;
+int[] alturas;
+
+void setup() {
+  size(800, 600);
+  alturas = new int[cant_barras];
+
+  for (int i = 0; i < cant_barras; i++) {
+    alturas[i] = height / 2;
+  }
+}
+
+void draw() {
+  background(255);
+
+  float ancho = width / (float)cant_barras;
+
+  for (int i = 0; i < cant_barras; i++) {
+
+    float x = i * ancho;
+    float y = height - alturas[i];
+
+    if (mousePressed) {
+      if (mouseX > x && mouseX < x + ancho) {
+
+        // altura según mouse
+        alturas[i] = height - mouseY;
+
+        if (alturas[i] < 0) {
+          alturas[i] = 0;
+        }
+
+        if (alturas[i] > height) {
+          alturas[i] = height;
+        }
+      }
+    }
+
+    fill(0);
+    rect(x, y, ancho - 2, alturas[i]);
+  }
+}
