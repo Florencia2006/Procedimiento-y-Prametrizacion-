@@ -1,0 +1,53 @@
+int cant_fil = 16;
+int cant_col = 9;
+
+boolean[][] grilla;
+
+float tam;
+
+void setup() {
+  size(800, 450);
+  
+  grilla = new boolean[cant_fil][cant_col];
+  
+  tam = width / cant_fil;
+}
+
+void draw() {
+  background(255); 
+  for (int i = 0; i < cant_fil; i++){
+    for (int j = 0; j < cant_col; j++){
+      float x = i * tam;
+      float y = j * tam;
+      
+      if (grilla[i][j]){
+        dibujarEstampa(x, y, tam, tam);
+      } 
+      else {
+        fill(255);
+        stroke(0);
+        rect(x, y, tam, tam);
+      }
+    }
+  }
+}
+
+void mousePressed(){
+  int col = int(mouseX / tam);
+  int fil = int(mouseY / tam); 
+  
+  if (col >= 0 && col < cant_fil && fil >= 0 && fil < cant_col) { 
+    if (grilla[col][fil] == false) {
+      grilla[col][fil] = true;
+    } else {
+      grilla[col][fil] = false;
+    }
+  }
+}
+
+void dibujarEstampa(float x, float y, float w, float h) {
+  fill(0);
+  rect(x, y, w, h);
+  fill(255);
+  ellipse(x + w/2, y + h/2, w/2, h/2);
+}
