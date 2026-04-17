@@ -1,0 +1,39 @@
+int cant_fil = 15;
+int cant_col = 9;
+float[][] distancias;
+
+void setup() {
+  size(800, 600);
+  distancias = new float[cant_fil][cant_col];
+}
+
+void draw() {
+  background(0);
+  float ancho = width / cant_fil;
+  float alto = height / cant_col;
+  calcularDistancias(ancho, alto);
+  dibujarGrilla(ancho, alto);
+}
+
+void calcularDistancias(float ancho, float alto) {
+  for (int i = 0; i < cant_fil; i++) {
+    for (int j = 0; j < cant_col; j++) {
+      float x = i * ancho + ancho / 2;
+      float y = j * alto + alto / 2;
+      float d = dist(x, y, mouseX, mouseY)
+      distancias[i][j] = d;
+    }
+  }
+}
+void dibujarGrilla(float ancho, float alto) {
+  float maxDist = dist(0, 0, width, height);
+  noStroke();
+  for (int i = 0; i < cant_fil; i++) {
+    for (int j = 0; j < cant_col; j++) {
+      float d = distancias[i][j];
+      float gris = map(d, 0, maxDist, 255, 0);
+      fill(gris);
+      rect(i * ancho, j * alto, ancho, alto);
+    }
+  }
+}
