@@ -1,0 +1,38 @@
+int filas = 10;
+int columnas = 10;
+int tam = 40;
+
+boolean[][][] lab;
+
+void setup() {
+  size(500, 500);
+  
+  lab = new boolean[filas][columnas][6];
+  
+  for (int i = 0; i < filas; i++) {
+    for (int j = 0; j < columnas; j++) {
+      for (int k = 0; k < 6; k++) {
+        lab[i][j][k] = random(1) > 0.5;
+      }
+    }
+  }
+}
+
+void draw() {
+  background(255);
+  
+  for (int i = 0; i < filas; i++) {
+    for (int j = 0; j < columnas; j++) {
+      
+      int x = j * tam;
+      int y = i * tam;
+      
+      if (lab[i][j][0]) line(x, y, x + tam, y);
+      if (lab[i][j][1]) line(x + tam, y, x + tam, y + tam);
+      if (lab[i][j][2]) line(x, y + tam, x + tam, y + tam);
+      if (lab[i][j][3]) line(x, y, x, y + tam);
+      if (lab[i][j][4]) line(x, y, x + tam, y + tam);
+      if (lab[i][j][5]) line(x + tam, y, x, y + tam);
+    }
+  }
+}
