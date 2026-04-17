@@ -1,0 +1,29 @@
+int filas = 8;
+int columnas = 8;
+float tam;
+
+void setup() {
+  size(400, 400);
+  tam = width / columnas;
+}
+
+void draw() {
+  background(255);
+  
+  for (int i = 0; i < columnas; i++) {
+    for (int j = 0; j < filas; j++) {
+      
+      float x = i * tam;
+      float y = j * tam;
+      
+      // Alternar colores
+      if ((i + j) % 2 == 0) {
+        fill(255); // blanco
+      } else {
+        fill(0);   // negro
+      }
+      
+      rect(x, y, tam, tam);
+    }
+  }
+}
