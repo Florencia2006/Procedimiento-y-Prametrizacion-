@@ -1,0 +1,24 @@
+float r;
+float cx, cy;
+void setup() {
+  size(800, 600);
+  r=150;
+  cx=random(r, width-r);
+  cy=random(r, height-r);
+}
+boolean hayColision(int px, int py, int cx, int cy, int r) {
+  float d=dist(px, py, cx, cy);
+  if (d>r) {
+    return false;
+  } else {
+    return true;
+  }
+}
+void draw() {
+  if (hayColision(mouseX, mouseY, int(cx), int(cy), int(r))) {
+    fill(10, 3, 255);
+  } else {
+    fill(2, 2, 3);
+  }
+  circle(cx, cy, r*2);
+}
