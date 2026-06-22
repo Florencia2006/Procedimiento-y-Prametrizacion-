@@ -1,0 +1,87 @@
+class MovilA {
+  PVector pos;
+  PVector vel = new PVector(5, 3);
+  float d = 40;
+
+  MovilA(float origenX, float origenY) {
+    pos = new PVector(origenX, origenY);
+  }
+
+  void mostrar() {
+    fill(50);
+    stroke(0);
+    circle(pos.x, pos.y, d);
+  }
+
+  void contener() {
+    float radio = d / 2;
+    if (pos.x > width - radio || pos.x < radio) {
+      vel.x *= -1;
+    }
+    if (pos.y > height - radio || pos.y < radio) {
+      vel.y *= -1;
+    }
+  }
+
+  void mover() {
+    pos.add(vel);
+    contener();
+  }
+}
+
+-----------------------------------------------------
+
+class MovilB {
+  PVector pos;
+  PVector vel = new PVector(0, 0);
+  PVector acel = new PVector(0, 0);
+  float d = 30;
+  float velocidadMaxima = 4;
+
+  MovilB(float origenX, float origenY) {
+    pos = new PVector(origenX, origenY);
+  }
+
+  void mostrar() {
+    fill(200, 0, 0);
+    stroke(0);
+    circle(pos.x, pos.y, d);
+  }
+
+  void perseguir(PVector objetivo) {
+    PVector direccion = PVector.sub(objetivo, pos);
+    direccion.normalize();
+    direccion.mult(0.15);
+    acel.add(direccion);
+  }
+
+  void mover() {
+    vel.add(acel);
+    vel.limit(velocidadMaxima);
+    pos.add(vel);
+    acel.mult(0);
+  }
+}
+
+---------------------------------------------------------------------------------
+
+
+MovilA ma;
+MovilB mb;
+
+void setup() {
+  fullScreen();
+  ma = new MovilA(width / 4, height / 2);
+  mb = new MovilB(width * 0.75, height / 2);
+}
+
+void draw() {
+  background(255);
+
+  ma.mover();
+  ma.mostrar();
+
+  mb.perseguir(ma.pos);
+  mb.mover();
+  mb.mostrar();
+}
