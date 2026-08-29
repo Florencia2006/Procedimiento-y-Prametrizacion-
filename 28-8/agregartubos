@@ -1,0 +1,9 @@
+void Agregartubos() {
+  float tActual=millis();
+  float dt=tActual-UltimoPar;
+  if (dt > 5000) {
+    tubos.add(new Cuadrado());
+    tubos.add(new Cuadrado());
+    UltimoPar=tActual;
+  }
+}
