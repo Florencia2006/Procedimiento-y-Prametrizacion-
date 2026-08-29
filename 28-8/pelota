@@ -1,0 +1,28 @@
+class Pelota {
+  PVector pos;
+  PVector vel;
+  float r=10;
+  color c= color(255);
+}
+
+Pelota(float x, float y) {
+  pos = new PVector(x, y);
+  vel = new PVector(0, 0);
+}
+void addFuerza(PVector Fuerza) {
+  vel.add(fuerza);
+}
+void mover() {
+  pos.add(vel);
+  vel.limit(10);
+}
+void mostrar() {
+  fill(c);
+  circle(pos.X, pos.Y, r);
+}
+void rebotar() {
+  if (pos.Y > height-r) {
+    pos.Y = height-r;
+    vel.Y = vel.Y*(-0.5);
+  }
+}
